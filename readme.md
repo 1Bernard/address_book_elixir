@@ -106,12 +106,12 @@ password = plain_password_2
 
 The code includes `@moduledoc` and `@doc` attributes. You can generate browsable HTML documentation from these comments using `ExDoc`:
 
-1.  Make sure you have fetched dependencies (`mix deps.get`).
-2.  Run the documentation task:
-    ```bash
-    mix docs
-    ```
-3.  Open the generated documentation in your web browser by opening the file `doc/index.html`.
+1.  Make sure you have fetched dependencies (`mix deps.get`).
+2.  Run the documentation task:
+    ```bash
+    mix docs
+    ```
+3.  Open the generated documentation in your web browser by opening the file `doc/index.html`.
 
 **Alternatively, you can view the deployed documentation online:** [https://1bernard.github.io/address_book_elixir/readme.html](https://1bernard.github.io/address_book_elixir/readme.html)
 
