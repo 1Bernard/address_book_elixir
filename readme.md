@@ -135,12 +135,12 @@ This application can be extended and improved in many ways. Consider implementin
 
 This project is your starting point for learning Elixir CLI development. Here's a suggested path:
 
-1.  **Get it Running:** Follow the "How to Run" instructions above to ensure you can start and interact with the application. Register a user and add some contacts. Observe how the `database/` directory and files are created.
-2.  **Explore the Code:** Read through `lib/address_book.ex` and `lib/mix/tasks/run_address_book.ex`. Use the inline `@moduledoc` and `@doc` comments directly in your editor, or generate the HTML documentation (`mix docs`) and browse it in your web browser.
-3.  **Trace Execution:** As you interact with the running application, try to follow the code path in your editor. For example, choose "1" from the contact menu ("Add Contact") and trace how `handle_contact_action` calls `create`, which then calls `get_input` multiple times, and finally leads to `review_new_contact` and `save_new_contact`.
-4.  **Identify Key Patterns:** Look for the recurring patterns like state passing in `main_loop`, `case` statements for handling different outcomes (input, file operations), and `Enum` functions for list manipulation.
-5.  **Implement an Improvement:** Pick one item from the "Areas for Improvement" list (e.g., add basic validation to ensure the email address input contains "@" and ".") and try to implement it. This hands-on practice is invaluable.
-6.  **Build Your Own:** Once you feel comfortable, try starting a new Mix project (`mix new my_cli_app`) and build something similar but different (e.g., a task tracker, a simple inventory), using this project as a reference and template for structure, state management, and file I/O.
+1.  **Get it Running:** Follow the "How to Run" instructions above to ensure you can start and interact with the application. Register a user and add some contacts. Observe how the `database/` directory and files are created.
+2.  **Explore the Code:** Read through `lib/address_book.ex` and `lib/mix/tasks/run_address_book.ex`. Use the inline `@moduledoc` and `@doc` comments directly in your editor, or generate the HTML documentation (`mix docs`) and browse it in your web browser.
+3.  **Trace Execution:** As you interact with the running application, try to follow the code path in your editor. For example, choose "1" from the contact menu ("Add Contact") and trace how `handle_contact_action` calls `create`, which then calls `get_input` multiple times, and finally leads to `review_new_contact` and `save_new_contact`.
+4.  **Identify Key Patterns:** Look for the recurring patterns like state passing in `main_loop`, `case` statements for handling different outcomes (input, file operations), and `Enum` functions for list manipulation.
+5.  **Implement an Improvement:** Pick one item from the "Areas for Improvement" list (e.g., add basic validation to ensure the email address input contains "@" and ".") and try to implement it. This hands-on practice is invaluable.
+6.  **Build Your Own:** Once you feel comfortable, try starting a new Mix project (`mix new my_cli_app`) and build something similar but different (e.g., a task tracker, a simple inventory), using this project as a reference and template for structure, state management, and file I/O.
 
 ## License
 
