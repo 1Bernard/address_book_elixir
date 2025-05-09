@@ -21,8 +21,8 @@ A basic command-line application in Elixir for managing personal contacts with m
     * Elixir and Erlang/OTP installed on your system. You can find installation instructions [here](https://elixir-lang.org/install.html).
 2.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/1Bernard/address_book_elixir](https://github.com/1Bernard/address_book_elixir)
-    cd address_book_elixir
+    git clone https://github.com/1Bernard/address_book_elixir
+    cd address_book_elixir
     ```
 3.  **Fetch dependencies:**
     ```bash
