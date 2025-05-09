@@ -17,23 +17,40 @@ A basic command-line application in Elixir for managing personal contacts with m
 
 ## How to Run
 
-1.  **Prerequisites:**\
+
+1.  **Prerequisites:**
+
     * Elixir and Erlang/OTP installed on your system. You can find installation instructions [here](https://elixir-lang.org/install.html).
-2.  **Clone the repository:**\
+
+2.  **Clone the repository:**
+
     ```bash
-    git clone [https://github.com/1Bernard/address_book_elixir](https://github.com/1Bernard/address_book_elixir)
+
+    git clone https://github.com/1Bernard/address_book_elixir
+
     cd address_book_elixir
+
     ```
-3.  **Fetch dependencies:**\
+
+3.  **Fetch dependencies:**
+
     ```bash
+
     mix deps.get
+
     ```
+
     This will download `ex_doc`, needed for documentation generation.
-4.  **Run the application using Mix:**\
+
+4.  **Run the application using Mix:**
+
     ```bash
+
     mix run_address_book
+
     ```
-    The application will start, display a welcome message, and present the authentication menu.\
+
+    The application will start, display a welcome message, and present the authentication menu.
 
 ## Project Structure
 
