@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.37.3">
+    <meta name="project" content="address_book v0.1.0">
+
+
+    <title>AddressBook — address_book v0.1.0</title>
+
+    <link rel="stylesheet" href="dist/html-elixir-6X3L5KMG.css" />
+
+    <script defer src="dist/sidebar_items-5F82E3CA.js"></script>
+    <script defer src="docs_config.js"></script>
+    <script defer src="dist/html-ALU6OERS.js"></script>
+
+  </head>
+  <body>
+    <script>(()=>{var t="ex_doc:settings",e="dark";var o="dark",s="light";var E="sidebar_state",n="closed";var r="sidebar_width";var a="sidebar-open";var i=new URLSearchParams(window.location.search),S=i.get("theme")||JSON.parse(localStorage.getItem(t)||"{}").theme;(S===o||S!==s&&window.matchMedia("(prefers-color-scheme: dark)").matches)&&document.body.classList.add(e);var d=sessionStorage.getItem(E),A=d!==n&&!window.matchMedia(`screen and (max-width: ${768}px)`).matches;document.body.classList.toggle(a,A);var c=sessionStorage.getItem(r);c&&document.body.style.setProperty("--sidebarWidth",`${c}px`);var p=/(Macintosh|iPhone|iPad|iPod)/.test(window.navigator.userAgent);document.documentElement.classList.toggle("apple-os",p);})();
+</script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+      <div>
+        <a href="readme.html" class="sidebar-projectName" translate="no">
+address_book
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v0.1.0
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-list-nav" class="sidebar-list-nav" role="tablist" data-extras=""></ul>
+  </div>
+</nav>
+
+<output role="status" id="toast"></output>
+
+<main class="content page-module" id="main" data-type="modules">
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of address_book</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search" tabindex="-1">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <div class="heading-with-actions top-heading">
+    <h1>
+      <span translate="no">AddressBook</span> 
+      <small class="app-vsn" translate="no">(address_book v0.1.0)</small>
+
+    </h1>
+
+  </div>
+
+
+    <section id="moduledoc">
+<p>A simple command-line address book application built in Elixir.</p><p>It supports user authentication, contact management (add, edit, view, delete, search),
+and persists data to local text files within a 'database' subdirectory.
+This application serves as a learning tool for basic Elixir concepts including
+state management via recursion, file I/O, data structures (Maps, Lists),
+and user interaction.</p><p><strong>WARNING:</strong> This application stores user passwords in plain text for simplicity and
+educational purposes. <strong>DO NOT</strong> use this code in any production environment.
+Secure password handling (hashing and salting) is essential for real-world applications.</p>
+    </section>
+
+</div>
+
+  <section id="summary" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#summary">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Summary</span>
+    </h1>
+<div class="summary-functions summary">
+  <h2>
+    <a href="#functions">Functions</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#auth_menu/0" data-no-tooltip="" translate="no">auth_menu()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Displays the authentication menu options to the user.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#contact_menu/0" data-no-tooltip="" translate="no">contact_menu()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Displays the contact management menu options to the logged-in user.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#create/3" data-no-tooltip="" translate="no">create(contacts, users, current_user)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Handles the process of adding a new contact for the current user.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#delete/3" data-no-tooltip="" translate="no">delete(contacts, users, current_user)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Handles the process of deleting a contact for the current user.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#display_contact/1" data-no-tooltip="" translate="no">display_contact(contact)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Displays the details of a single contact map to the user.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#display_contacts/1" data-no-tooltip="" translate="no">display_contacts(contacts)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Displays a list of contact maps to the user.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#edit/3" data-no-tooltip="" translate="no">edit(contacts, users, current_user)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Handles the process of editing an existing contact for the current user.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#edit_new_contact_details/4" data-no-tooltip="" translate="no">edit_new_contact_details(current_details, contacts, users, current_user)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Allows the user to edit the details of the contact they are currently
+creating, prompting for each field and allowing blank input to keep
+the existing value or '*' to cancel the entire creation process.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#end_session/0" data-no-tooltip="" translate="no">end_session()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Ends the application session gracefully.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#get_input/1" data-no-tooltip="" translate="no">get_input(prompt)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Gets a line of input from the user after displaying a prompt and trims whitespace.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#handle_auth_action/3" data-no-tooltip="" translate="no">handle_auth_action(input, contacts, users)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Handles user input when no user is logged in.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#handle_contact_action/4" data-no-tooltip="" translate="no">handle_contact_action(input, contacts, users, current_user)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Handles user input when a user is logged in.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#load_contacts/0" data-no-tooltip="" translate="no">load_contacts()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Loads contacts from the contacts file (<code class="inline">database/contacts.txt</code>).</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#load_users/0" data-no-tooltip="" translate="no">load_users()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Loads users from the users file (<code class="inline">database/users.txt</code>).</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#login/2" data-no-tooltip="" translate="no">login(contacts, users)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Handles the user login process.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#logout/2" data-no-tooltip="" translate="no">logout(contacts, users)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Logs out the current user.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#main_loop/3" data-no-tooltip="" translate="no">main_loop(contacts, users, current_user)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>The main application loop.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#register/2" data-no-tooltip="" translate="no">register(contacts, users)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Handles the user registration process.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#review_new_contact/4" data-no-tooltip="" translate="no">review_new_contact(contact_details, contacts, users, current_user)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Displays a summary of the new contact details and presents options to save,
+edit, or cancel the contact creation process.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#run/0" data-no-tooltip="" translate="no">run()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Starts the address book application loop.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#save_contacts/1" data-no-tooltip="" translate="no">save_contacts(contacts)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Saves the current list of contacts to the contacts file (<code class="inline">database/contacts.txt</code>).</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#save_new_contact/4" data-no-tooltip="" translate="no">save_new_contact(contact_details, contacts, users, current_user)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Saves the new contact to the in-memory contacts list and then persists
+the entire list to the contacts file.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#save_users/1" data-no-tooltip="" translate="no">save_users(users)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Saves the current list of users to the users file (<code class="inline">database/users.txt</code>).</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#search/3" data-no-tooltip="" translate="no">search(contacts, users, current_user)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Searches contacts belonging to the current user based on a search term.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#view/4" data-no-tooltip="" translate="no">view(user_contacts, contacts, users, current_user)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Displays all contacts belonging to the current user.</p></div>
+
+    </div>
+
+</div>
+
+  </section>
+
+
+  <section id="functions" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#functions">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Functions</span>
+    </h1>
+    <div class="functions-list">
+<section class="detail" id="auth_menu/0">
+
+  <div class="detail-header">
+    <a href="#auth_menu/0" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">auth_menu()</h1>
+
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+<p>Displays the authentication menu options to the user.</p>
+  </section>
+</section>
+<section class="detail" id="contact_menu/0">
+
+  <div class="detail-header">
+    <a href="#contact_menu/0" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">contact_menu()</h1>
+
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+<p>Displays the contact management menu options to the logged-in user.</p>
+  </section>
+</section>
+<section class="detail" id="create/3">
+
+  <div class="detail-header">
+    <a href="#create/3" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">create(contacts, users, current_user)</h1>
+
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+<p>Handles the process of adding a new contact for the current user.</p><p>Prompts the user for contact details (first name, last name, contact number, email).
+Allows the user to cancel input at any step by typing '*'.
+Collects the details into a map and then proceeds to the <a href="#review_new_contact/4"><code class="inline">review_new_contact/4</code></a> step.</p><p>Arguments:</p><ul><li><code class="inline">contacts</code>: The current list of all contact maps.</li><li><code class="inline">users</code>: The current list of all user maps.</li><li><code class="inline">current_user</code>: The username (string) of the logged-in user.</li></ul>
+  </section>
+</section>
+<section class="detail" id="delete/3">
+
+  <div class="detail-header">
+    <a href="#delete/3" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">delete(contacts, users, current_user)</h1>
+
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+<p>Handles the process of deleting a contact for the current user.</p><p>Displays the current user's contacts, prompts for the entry number to delete.
+If a valid entry number is selected, removes the contact from the list,
+re-indexes the remaining contacts for that specific user, and saves the
+full list (with the contact removed and user's contacts re-indexed)
+to the file. Displays a success message and the updated list, then
+returns to the main loop. Handles invalid input and cases where the
+user has no contacts.</p><p>Arguments:</p><ul><li><code class="inline">contacts</code>: The current list of all contact maps.</li><li><code class="inline">users</code>: The current list of all user maps (passed through).</li><li><code class="inline">current_user</code>: The username (string) of the logged-in user.</li></ul>
+  </section>
+</section>
+<section class="detail" id="display_contact/1">
+
+  <div class="detail-header">
+    <a href="#display_contact/1" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">display_contact(contact)</h1>
+
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+<p>Displays the details of a single contact map to the user.</p><p>Formats and prints the key=value pairs for the contact, excluding
+the internal 'user' field which links it to a specific user.</p><p>Arguments:</p><ul><li><code class="inline">contact</code>: A single contact map.</li></ul>
+  </section>
+</section>
+<section class="detail" id="display_contacts/1">
+
+  <div class="detail-header">
+    <a href="#display_contacts/1" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">display_contacts(contacts)</h1>
+
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+<p>Displays a list of contact maps to the user.</p><p>Iterates through the list, calling <a href="#display_contact/1"><code class="inline">display_contact/1</code></a> for each contact
+and adding an empty line between entries for readability.</p><p>Arguments:</p><ul><li><code class="inline">contacts</code>: A list of contact maps to display.</li></ul>
+  </section>
+</section>
+<section class="detail" id="edit/3">
+
+  <div class="detail-header">
+    <a href="#edit/3" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">edit(contacts, users, current_user)</h1>
+
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+<p>Handles the process of editing an existing contact for the current user.</p><p>Displays the current user's contacts, prompts for the entry number to edit.
+If a valid entry number is selected, prompts for updated details for each field,
+allowing blank input to keep the current value or '*' to cancel.
+Updates the contact in the list, saves the full list to the file, displays
+a success message, and returns to the main loop. Handles invalid input and
+cases where the user has no contacts.</p><p>Arguments:</p><ul><li><code class="inline">contacts</code>: The current list of all contact maps.</li><li><code class="inline">users</code>: The current list of all user maps (passed through).</li><li><code class="inline">current_user</code>: The username (string) of the logged-in user.</li></ul>
+  </section>
+</section>
+<section class="detail" id="edit_new_contact_details/4">
+
+  <div class="detail-header">
+    <a href="#edit_new_contact_details/4" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">edit_new_contact_details(current_details, contacts, users, current_user)</h1>
+
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+<p>Allows the user to edit the details of the contact they are currently
+creating, prompting for each field and allowing blank input to keep
+the existing value or '*' to cancel the entire creation process.</p><p>Arguments:</p><ul><li><code class="inline">current_details</code>: A map containing the current details of the contact being created.</li><li><code class="inline">contacts</code>: The current list of all contact maps (passed through).</li><li><code class="inline">users</code>: The current list of all user maps (passed through).</li><li><code class="inline">current_user</code>: The username (string) of the logged-in user.</li></ul>
+  </section>
+</section>
+<section class="detail" id="end_session/0">
+
+  <div class="detail-header">
+    <a href="#end_session/0" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">end_session()</h1>
+
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+<p>Ends the application session gracefully.</p><p>Displays a farewell message and halts the system with an exit code of 0.</p>
+  </section>
+</section>
+<section class="detail" id="get_input/1">
+
+  <div class="detail-header">
+    <a href="#get_input/1" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">get_input(prompt)</h1>
+
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+<p>Gets a line of input from the user after displaying a prompt and trims whitespace.</p><p>Arguments:</p><ul><li><code class="inline">prompt</code>: The string prompt to display to the user.</li></ul><p>Returns:</p><ul><li>The trimmed string input from the user.</li></ul>
+  </section>
+</section>
+<section class="detail" id="handle_auth_action/3">
+
+  <div class="detail-header">
+    <a href="#handle_auth_action/3" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">handle_auth_action(input, contacts, users)</h1>
+
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+<p>Handles user input when no user is logged in.</p><p>Based on the input, it calls the corresponding function for
+registration, login, or ending the session. Invalid input
+results in an error message and returns to the main loop.</p><p>Arguments:</p><ul><li><code class="inline">input</code>: The trimmed string input from the user.</li><li><code class="inline">contacts</code>: The current list of all contact maps.</li><li><code class="inline">users</code>: The current list of all user maps.</li></ul>
+  </section>
+</section>
+<section class="detail" id="handle_contact_action/4">
+
+  <div class="detail-header">
+    <a href="#handle_contact_action/4" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">handle_contact_action(input, contacts, users, current_user)</h1>
+
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+<p>Handles user input when a user is logged in.</p><p>Based on the input, it calls the corresponding function for
+contact management (Create, Edit, View, Delete, Search) or
+logging out. Invalid input results in an error message and
+returns to the main loop.</p><p>Arguments:</p><ul><li><code class="inline">input</code>: The trimmed string input from the user.</li><li><code class="inline">contacts</code>: The current list of all contact maps.</li><li><code class="inline">users</code>: The current list of all user maps.</li><li><code class="inline">current_user</code>: The username (string) of the logged-in user.</li></ul>
+  </section>
+</section>
+<section class="detail" id="load_contacts/0">
+
+  <div class="detail-header">
+    <a href="#load_contacts/0" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">load_contacts()</h1>
+
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+<p>Loads contacts from the contacts file (<code class="inline">database/contacts.txt</code>).</p><p>Reads the file content, splits it into contact entries based on double newlines,
+and parses each entry from the custom <code class="inline">key = value</code> format into an Elixir map.
+Converts the 'entry' key's value to an integer and other values to strings.
+Returns a list of contact maps or an empty list if the file doesn't exist or
+an error occurs during reading.</p><p>Returns:</p><ul><li>A list of contact maps.</li></ul>
+  </section>
+</section>
+<section class="detail" id="load_users/0">
+
+  <div class="detail-header">
+    <a href="#load_users/0" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">load_users()</h1>
+
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+<p>Loads users from the users file (<code class="inline">database/users.txt</code>).</p><p>Reads the file content, splits it into user entries based on double newlines,
+and parses each entry from the custom <code class="inline">key = value</code> format into an Elixir map.
+Returns a list of user maps or an empty list if the file doesn't exist or
+an error occurs during reading.</p><p>Returns:</p><ul><li>A list of user maps.</li></ul>
+  </section>
+</section>
+<section class="detail" id="login/2">
+
+  <div class="detail-header">
+    <a href="#login/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">login(contacts, users)</h1>
+
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+<p>Handles the user login process.</p><p>Prompts the user for username and password. Checks if a user with
+the matching username and password exists in the users list. If found,
+starts the main loop in a logged-in state with the authenticated user's
+username. If not found, displays an error and returns to the
+authentication menu. Warns about plain text password check.</p><p>Arguments:</p><ul><li><code class="inline">contacts</code>: The current list of all contact maps (passed through, not used in this function).</li><li><code class="inline">users</code>: The current list of all user maps.</li></ul>
+  </section>
+</section>
+<section class="detail" id="logout/2">
+
+  <div class="detail-header">
+    <a href="#logout/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">logout(contacts, users)</h1>
+
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+<p>Logs out the current user.</p><p>Simply returns to the main loop in a pre-login state by setting the
+<code class="inline">current_user</code> argument to <code class="inline">nil</code>.</p><p>Arguments:</p><ul><li><code class="inline">contacts</code>: The current list of all contact maps.</li><li><code class="inline">users</code>: The current list of all user maps.</li></ul>
+  </section>
+</section>
+<section class="detail" id="main_loop/3">
+
+  <div class="detail-header">
+    <a href="#main_loop/3" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">main_loop(contacts, users, current_user)</h1>
+
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+<p>The main application loop.</p><p>Manages the application state (<code class="inline">contacts</code>, <code class="inline">users</code>, <code class="inline">current_user</code>) recursively.
+It displays the appropriate menu (authentication or contact management)
+based on whether a user is logged in (<code class="inline">current_user</code> is non-nil).
+It reads user input and delegates handling to either <a href="#handle_auth_action/3"><code class="inline">handle_auth_action/3</code></a>
+or <a href="#handle_contact_action/4"><code class="inline">handle_contact_action/4</code></a>. The loop continues until the user chooses
+to exit or signals end-of-file (Ctrl+D).</p><p>Arguments:</p><ul><li><code class="inline">contacts</code>: A list of all contact maps loaded from the file.</li><li><code class="inline">users</code>: A list of all user maps loaded from the file.</li><li><code class="inline">current_user</code>: The username (string) of the logged-in user, or <code class="inline">nil</code> if no user is logged in.</li></ul>
+  </section>
+</section>
+<section class="detail" id="register/2">
+
+  <div class="detail-header">
+    <a href="#register/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">register(contacts, users)</h1>
+
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+<p>Handles the user registration process.</p><p>Prompts the user for a username and password. Checks if the username
+already exists. If not, creates a new user map, adds it to the list
+of users, saves the updated list to the users file, and returns
+to the authentication menu. Warns about plain text password storage.</p><p>Arguments:</p><ul><li><code class="inline">contacts</code>: The current list of all contact maps (passed through, not used in this function).</li><li><code class="inline">users</code>: The current list of all user maps.</li></ul>
+  </section>
+</section>
+<section class="detail" id="review_new_contact/4">
+
+  <div class="detail-header">
+    <a href="#review_new_contact/4" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">review_new_contact(contact_details, contacts, users, current_user)</h1>
+
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+<p>Displays a summary of the new contact details and presents options to save,
+edit, or cancel the contact creation process.</p><p>Arguments:</p><ul><li><code class="inline">contact_details</code>: A map containing the details collected for the new contact.</li><li><code class="inline">contacts</code>: The current list of all contact maps.</li><li><code class="inline">users</code>: The current list of all user maps.</li><li><code class="inline">current_user</code>: The username (string) of the logged-in user.</li></ul>
+  </section>
+</section>
+<section class="detail" id="run/0">
+
+  <div class="detail-header">
+    <a href="#run/0" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">run()</h1>
+
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+<p>Starts the address book application loop.</p><p>This is the main entry point. It initializes the database directory,
+loads existing contacts and users from their respective files, and
+enters the main application loop in a pre-login state (no user logged in).</p>
+  </section>
+</section>
+<section class="detail" id="save_contacts/1">
+
+  <div class="detail-header">
+    <a href="#save_contacts/1" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">save_contacts(contacts)</h1>
+
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+<p>Saves the current list of contacts to the contacts file (<code class="inline">database/contacts.txt</code>).</p><p>Formats the list of contact maps into the custom <code class="inline">key = value</code> format,
+with double newlines separating entries. Writes the formatted string to the file,
+overwriting the existing content. Ensures the database directory exists first.</p><p>Arguments:</p><ul><li><code class="inline">contacts</code>: The list of contact maps to save.</li></ul><p>Returns:</p><ul><li><code class="inline">:ok</code> if the file was successfully written.</li><li><code class="inline">{:error, reason}</code> if an error occurred during writing.</li></ul>
+  </section>
+</section>
+<section class="detail" id="save_new_contact/4">
+
+  <div class="detail-header">
+    <a href="#save_new_contact/4" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">save_new_contact(contact_details, contacts, users, current_user)</h1>
+
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+<p>Saves the new contact to the in-memory contacts list and then persists
+the entire list to the contacts file.</p><p>Determines the next available entry number specific to the current user.
+Creates a new contact map including the user and entry number.
+Adds the new contact to the list, saves the list, displays a success
+message, and returns to the main loop. Handles file saving errors.</p><p>Arguments:</p><ul><li><code class="inline">contact_details</code>: A map containing the details for the contact to save.</li><li><code class="inline">contacts</code>: The current list of all contact maps.</li><li><code class="inline">users</code>: The current list of all user maps (passed through).</li><li><code class="inline">current_user</code>: The username (string) of the logged-in user.</li></ul>
+  </section>
+</section>
+<section class="detail" id="save_users/1">
+
+  <div class="detail-header">
+    <a href="#save_users/1" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">save_users(users)</h1>
+
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+<p>Saves the current list of users to the users file (<code class="inline">database/users.txt</code>).</p><p>Formats the list of user maps into the custom <code class="inline">key = value</code> format,
+with double newlines separating entries. Writes the formatted string to the file,
+overwriting the existing content. Ensures the database directory exists first.
+<strong>WARNING:</strong> This saves passwords in plain text.</p><p>Arguments:</p><ul><li><code class="inline">users</code>: The list of user maps to save.</li></ul><p>Returns:</p><ul><li><code class="inline">:ok</code> if the file was successfully written.</li><li><code class="inline">{:error, reason}</code> if an error occurred during writing.</li></ul>
+  </section>
+</section>
+<section class="detail" id="search/3">
+
+  <div class="detail-header">
+    <a href="#search/3" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">search(contacts, users, current_user)</h1>
+
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+<p>Searches contacts belonging to the current user based on a search term.</p><p>Filters the current user's contacts, checking if the search term (case-insensitive)
+is contained within the first name, last name, contact number, or email fields.
+Displays the matching contacts or a &quot;not found&quot; message. Allows '*' to cancel.</p><p>Arguments:</p><ul><li><code class="inline">contacts</code>: The current list of all contact maps.</li><li><code class="inline">users</code>: The current list of all user maps (passed through).</li><li><code class="inline">current_user</code>: The username (string) of the logged-in user.</li></ul>
+  </section>
+</section>
+<section class="detail" id="view/4">
+
+  <div class="detail-header">
+    <a href="#view/4" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">view(user_contacts, contacts, users, current_user)</h1>
+
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+<p>Displays all contacts belonging to the current user.</p><p>Filters the full contacts list to include only contacts where the
+<code class="inline">user</code> field matches <code class="inline">current_user</code>. Displays a message if the user
+has no contacts. Uses <a href="#display_contacts/1"><code class="inline">display_contacts/1</code></a> to format the output.
+Returns to the main loop after displaying.</p><p>Arguments:</p><ul><li><code class="inline">user_contacts</code>: A list of contact maps belonging only to the current user.<pre><code class="makeup elixir" translate="no"><span class="w">           </span><span class="p" data-group-id="9462645176-1">(</span><span class="nc">This</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">filtered</span><span class="w"> </span><span class="n">subset</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">full</span><span class="w"> </span><span class="n">contacts</span><span class="w"> </span><span class="n">list</span><span class="p" data-group-id="9462645176-1">)</span><span class="o">.</span></code></pre></li><li><code class="inline">contacts</code>: The full current list of all contact maps (passed through).</li><li><code class="inline">users</code>: The current list of all user maps (passed through).</li><li><code class="inline">current_user</code>: The username (string) of the logged-in user.</li></ul>
+  </section>
+</section>
+
+    </div>
+  </section>
+
+    <footer class="footer">
+      <p>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="address_book.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.37.3) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>
